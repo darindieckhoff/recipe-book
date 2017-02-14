@@ -17,7 +17,7 @@
 <!-- TODO Add a directive to the body element in order to 
   bootstrap your Angular app. Be sure to use the name 'app' 
   so that the provided Angular routes function properly. -->
-<body>
+<body ng-app="app">
 
   <div class="grid-container">
 
@@ -46,7 +46,12 @@
 
   <script src="vendor/angular.js"></script>
   <script src="vendor/angular-route.js"></script>
-  
+  <script src="scripts/app.js" type="text/javascript"></script>
+  <script src="scripts/services/data.js" type="text/javascript"></script>
+  <script src="scripts/controllers/recipesCtrl.js" type="text/javascript"></script>
+  <script src="scripts/directives/recipes.js" type="text/javascript"></script>
+  <script src="scripts/controllers/recipe-detailsCtrl.js" type="text/javascript"></script>
+  <script src="scripts/directives/recipe-details.js" type="text/javascript"></script>
   <!-- TODO Add script tags for your JavaScript files here -->
 
   <script src="scripts/route-config.js"></script>
