@@ -1,46 +1,58 @@
+(function() {
+
 'use strict';
 
 angular.module('app')
   .service('dataService', function($http) {
 
-    this.getRecipes = function (callback) {
+    // gets all recipes
+    this.getRecipes = function (callback, errorCallback) {
       $http.get('/api/recipes')
       .then(callback)
     };
 
-    this.getCategories = function (callback) {
+    //gets all categories
+    this.getCategories = function (callback, errorCallback) {
       $http.get('/api/categories')
       .then(callback)
     };
 
-    this.getFoodItems = function (callback) {
+    //gets all fooditems
+    this.getFoodItems = function (callback, errorCallback) {
       $http.get('/api/fooditems')
       .then(callback)
     };
 
-    this.getRecipesByCategory = function (selectedCategory, callback) {
-      $http.get('/api/recipes?category=' + selectedCategory)
-      .then(callback)
-    };
+    // /*gets recipes by category - not currently used*/
+    // this.getRecipesByCategory = function (selectedCategory, callback) {
+    //   $http.get('/api/recipes?category=' + selectedCategory)
+    //   .then(callback)
+    // };
 
-    this.getRecipesById = function (id, callback) {
+    //gets recipes by recipe ID
+    this.getRecipesById = function (id, callback, errorCallback) {
       $http.get('/api/recipes/' + id)
       .then(callback)
     };
 
+    //updates recipe in db
     this.updateRecipe = function (id , data, callback, errorCallback) {
       $http.put('/api/recipes/' + id , data)
-      .then(callback)
+      .then(callback, errorCallback)
     };
 
-    this.addRecipe = function (id , data, callback, errorCallback) {
+    //POSTs new recipe to db
+    this.addRecipe = function (data, callback, errorCallback) {
       $http.post('/api/recipes', data)
       .then(callback, errorCallback)
     };
 
-    this.deleteRecipe = function (id, callback) {
+    //deletes recipe by recipe ID
+    this.deleteRecipe = function (id, callback, errorCallback) {
       $http.delete('/api/recipes/' + id)
       .then(callback)
     };
 
   });
+
+})();
